@@ -1,0 +1,99 @@
+sp1 = 'p/2'
+sp2 = 'p'
+sp3 = '3p/2'
+pol = '+'
+neg = '-'
+def tm(f, z, a):
+    if f == 1:
+        if a == sp1:
+            return 'cos'
+        if a == sp2:
+            if z in pol:
+                return '-sin'
+            if z in neg:
+                return 'sin'
+        if a == sp3:
+            return '-cos'
+    if f == 2:
+        if a == sp1:
+            if z in pol:
+                return '-sin'
+            if z in neg:
+                return 'sin'
+        if a == sp2:
+            return '-cos'
+        if a == sp3:
+            if z in pol:
+                return 'sin'
+            if z in neg:
+                return '-sin'          
+    if f == 3:
+        if a == sp1:
+            if z in pol:
+                return '-ctg'
+            if z in neg:
+                return 'ctg'
+        if a == sp2:
+            if z in pol:
+                return 'tg'
+            if z in neg:
+                return '-tg'
+        if a == sp3:
+            if z in pol:
+                return '-ctg'
+            if z in neg:
+                return 'ctg'         
+    if f == 4:
+        if a == sp1:
+            if z in pol:
+                return '-tg'
+            if z in neg:
+                return 'tg'
+        if a == sp2:
+            if z in pol:
+                return 'ctg'
+            if z in neg:
+                return '-ctg'
+        if a == sp3:
+            if z in pol:
+                return '-tg'
+            if z in neg:
+                return 'tg'       
+
+
+
+
+
+print('Привет!\nЭта программа поможет тебе с тригонометрией в математике, с помощью формул приведения\nДля начала выбери функцию\nsin - введи 1, cos - 2, tg - 3, ctg - 4')
+f = int(input())
+c = 12
+while f > 4 or f < 1:
+    print('Еще раз говорю, если твоя функция sin напиши "1", если cos "2", если tg "3", если ctg "4"')
+    f = int(input())
+if f == 1:
+    print('Отлично!')
+elif f == 2:
+    print('Ваша функция cos')
+elif f == 3:
+    print('Ваша функция tg')
+elif f == 4:
+    print('Ваша функция ctg')
+print('Идем дальше\nТеперь введи аргумент в формате a +- b\nЧисло пи обозначь английской буквой "p", например "3p/2 - 30"')
+m = input()
+m = str(m)
+#print(m)
+if '+' in m:
+    a = m.partition('+')[0]
+    z = m.partition('+')[1]
+    b = m.partition('+')[2]
+elif '-' in m:
+    a = m.partition('-')[0]
+    z = m.partition('-')[1]
+    b = m.partition('-')[2]
+a = a.replace(' ','')
+b = b.replace(' ','')
+#print(a)
+#print(z)
+#print(b)
+print('Успешно!\nВаш ответ:')
+print(tm(f, z, a), b, sep=' ')
